@@ -20,6 +20,8 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.089500666, a: 1}
   - {r: 0, g: 0.0042738914, b: 1, a: 1}
-  fixedXRotation: 90
-  rotationMode: 1
+  fixedXRotation: 0
+  moveSpeed: 10
+  splineFollowOffset: 2
+  rotationMode: 0
   fixedDirection: 0

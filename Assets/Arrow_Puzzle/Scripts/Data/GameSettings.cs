@@ -18,16 +18,30 @@ namespace ArrowPuzzle.Data
         public GameObject arrowPrefab;
         public List<Color> arrowColors;
         public float fixedXRotation = 90f;
+        public float moveSpeed = 10f;
+        public float splineFollowOffset = 0.5f;
         
         [Header("Rotation Logic")]
         public RotationMode rotationMode = RotationMode.Random;
         public ArrowDirection fixedDirection = ArrowDirection.Up;
-        
+
         public Vector3 GetRotationForDirection(int directionIndex)
         {
             // 0: Up (0 deg), 1: Right (90 deg), 2: Down (180 deg), 3: Left (270 deg)
             float yRotation = 90f * directionIndex;
             return new Vector3(fixedXRotation, yRotation, 0);
+        }
+
+        public Vector3 GetDirectionVector(int directionIndex)
+        {
+            switch ((ArrowDirection)directionIndex)
+            {
+                case ArrowDirection.Up: return Vector3.forward;
+                case ArrowDirection.Right: return Vector3.right;
+                case ArrowDirection.Down: return Vector3.back;
+                case ArrowDirection.Left: return Vector3.left;
+                default: return Vector3.zero;
+            }
         }
     }
 }
