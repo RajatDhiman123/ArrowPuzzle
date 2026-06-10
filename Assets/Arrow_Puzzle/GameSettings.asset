@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b5e833c7e39c14a8bd1f6da82bf5f7, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  defaultWidth: 6
+  defaultHeight: 9
+  spacing: 4
+  arrowPrefab: {fileID: 3903471732821110681, guid: ef5c350d91a16b5418ebb18670894366, type: 3}
+  arrowColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.089500666, a: 1}
+  - {r: 0, g: 0.0042738914, b: 1, a: 1}
+  fixedXRotation: 90
+  rotationMode: 1
+  fixedDirection: 0
