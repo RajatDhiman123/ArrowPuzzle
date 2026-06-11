@@ -39,8 +39,7 @@ namespace ArrowPuzzle.Gameplay
         }
 
         private void Update()
-        {
-            // Click Detection (Using Raycast for better compatibility)
+        { 
             if (Input.GetMouseButtonDown(0))
             {
                 CheckForClick();
@@ -48,6 +47,7 @@ namespace ArrowPuzzle.Gameplay
 
             if (isMoving && !attachedToSpline)
             {
+                transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
                 transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
             }
         }
@@ -66,8 +66,8 @@ namespace ArrowPuzzle.Gameplay
                         if (gridManager.CanMove(gridX, gridY, (ArrowDirection)Direction))
                         {
                             isMoving = true;
-                            gridManager.ClearCell(gridX, gridY);
-                            Debug.Log("[Arrow] Movement Started!");
+                            gridManager.ClearCell(gridX, gridY); 
+                            Debug.Log("[Arrow] Movement Started (Lifted)!");
                         }
                         else
                         {
@@ -94,20 +94,17 @@ namespace ArrowPuzzle.Gameplay
         {
             isMoving = false;
             attachedToSpline = true;
-
-            // 1. Calculate target point on spline
+             
             SplineSample result = spline.Project(transform.position);
             
             Vector3 startPos = transform.position;
             Quaternion startRot = transform.rotation;
-            
-            // We want to align the arrow with the spline's direction
+             
             Quaternion targetRot = result.rotation; 
 
-            float duration = 0.4f; // Short duration for a "snappy" but smooth feel
+            float duration = 0.25f;  
             float elapsed = 0f;
-
-            // 2. Smoothly interpolate to the spline point
+             
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
@@ -121,8 +118,7 @@ namespace ArrowPuzzle.Gameplay
                 
                 yield return null;
             }
-
-            // 3. Finalize attachment
+             
             transform.position = result.position;
             transform.rotation = targetRot;
 
@@ -140,7 +136,5 @@ namespace ArrowPuzzle.Gameplay
 
             Debug.Log($"[Arrow] Smoothly attached to {spline.gameObject.name} at {result.percent:P2}");
         }
-
-        // Removed the old AttachToSpline method to avoid confusion
     }
 }

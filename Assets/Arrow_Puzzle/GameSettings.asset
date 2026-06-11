@@ -22,6 +22,6 @@ MonoBehaviour:
   - {r: 0, g: 0.0042738914, b: 1, a: 1}
   fixedXRotation: 0
   moveSpeed: 10
-  splineFollowOffset: 2
+  splineFollowOffset: 0
   rotationMode: 0
   fixedDirection: 0
